@@ -1,0 +1,7 @@
+{
+  "name": "Catalogo AI",
+  "description": "Uma plataforma revolucionária que transforma catálogos técnicos em assistentes inteligentes conversacionais via texto e voz.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
