@@ -125,17 +125,17 @@ Nota: Estes dados foram agregados automaticamente da web e devem ser validados.
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-3xl font-bold text-slate-800 tracking-tight">Cadastro de Novo Ativo</h2>
-                    <p className="text-slate-500 mt-1">Registre produtos e alimente a base de conhecimento da IA.</p>
+                    <h2 className="text-3xl font-bold text-slate-100 tracking-tight">Cadastro de Novo Ativo</h2>
+                    <p className="text-slate-400 mt-1">Registre produtos e alimente a base de conhecimento da IA.</p>
                 </div>
                 <div className="flex gap-3">
-                    <button className="px-5 py-2.5 rounded-xl border border-slate-200 text-slate-600 font-medium hover:bg-slate-50 transition-all">
+                    <button className="px-5 py-2.5 rounded-xl border border-white/10 text-slate-400 font-medium hover:bg-white/5 transition-all">
                         Cancelar
                     </button>
                     <button
                         onClick={handleSave}
                         disabled={isSaving}
-                        className={`px-5 py-2.5 rounded-xl bg-blue-600 text-white font-medium shadow-lg shadow-blue-200 hover:bg-blue-700 hover:shadow-blue-300 transition-all transform hover:-translate-y-0.5 flex items-center gap-2 ${isSaving ? 'opacity-70 cursor-wait' : ''}`}
+                        className={`px-5 py-2.5 rounded-xl bg-brand-gradient text-brand-dark font-bold shadow-lg shadow-brand-primary/20 hover:scale-105 transition-all flex items-center gap-2 ${isSaving ? 'opacity-70 cursor-wait' : ''}`}
                     >
                         {isSaving ? 'Salvando...' : 'Salvar Produto'}
                     </button>
@@ -147,10 +147,10 @@ Nota: Estes dados foram agregados automaticamente da web e devem ser validados.
                 {/* Left Column: Image & Basic Identifiers */}
                 <div className="space-y-6">
                     {/* Image Upload Card */}
-                    <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-                        <h3 className="text-lg font-semibold text-slate-800 mb-4">Imagem do Produto</h3>
+                    <div className="bg-brand-dark/40 backdrop-blur-md rounded-2xl p-6 shadow-sm border border-white/5">
+                        <h3 className="text-lg font-semibold text-slate-100 mb-4">Imagem do Produto</h3>
                         <div
-                            className={`border-2 border-dashed rounded-xl h-64 flex flex-col items-center justify-center p-4 transition-all relative overflow-hidden ${dragActive ? 'border-blue-500 bg-blue-50' : 'border-slate-300 hover:border-blue-400 hover:bg-slate-50'}`}
+                            className={`border-2 border-dashed rounded-xl h-64 flex flex-col items-center justify-center p-4 transition-all relative overflow-hidden ${dragActive ? 'border-brand-primary bg-brand-primary/10' : 'border-white/10 hover:border-brand-primary/50 hover:bg-white/5'}`}
                             onDragEnter={handleDrag}
                             onDragLeave={handleDrag}
                             onDragOver={handleDrag}
@@ -160,11 +160,11 @@ Nota: Estes dados foram agregados automaticamente da web e devem ser validados.
                                 <img src={formData.imageUrl} alt="Preview" className="absolute inset-0 w-full h-full object-cover" />
                             ) : (
                                 <>
-                                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mb-4">
+                                    <div className="w-16 h-16 bg-brand-primary/10 rounded-full flex items-center justify-center text-brand-primary mb-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                                     </div>
-                                    <p className="text-sm text-slate-500 text-center font-medium">Arraste e solte ou clique para upload</p>
-                                    <p className="text-xs text-slate-400 mt-2 text-center">PNG, JPG até 5MB</p>
+                                    <p className="text-sm text-slate-400 text-center font-medium">Arraste e solte ou clique</p>
+                                    <p className="text-xs text-slate-500 mt-2 text-center">PNG, JPG até 5MB</p>
                                     <input
                                         type="file"
                                         className="absolute inset-0 opacity-0 cursor-pointer"
@@ -177,18 +177,18 @@ Nota: Estes dados foram agregados automaticamente da web e devem ser validados.
                     </div>
 
                     {/* SKU & Status */}
-                    <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 space-y-4">
+                    <div className="bg-brand-dark/40 backdrop-blur-md rounded-2xl p-6 shadow-sm border border-white/5 space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">SKU / Código</label>
+                            <label className="block text-sm font-medium text-slate-400 mb-1">SKU / Código</label>
                             <div className="relative">
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <span className="text-slate-400">#</span>
+                                    <span className="text-slate-500">#</span>
                                 </div>
                                 <input
                                     type="text"
                                     name="sku"
                                     placeholder="EX: MTR-2024-X"
-                                    className="w-full pl-8 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all placeholder:text-slate-400"
+                                    className="w-full pl-8 pr-4 py-2.5 bg-brand-dark/20 border border-white/10 rounded-xl focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary outline-none transition-all placeholder:text-slate-600 text-slate-200"
                                     value={formData.sku}
                                     onChange={handleChange}
                                 />
@@ -199,10 +199,10 @@ Nota: Estes dados foram agregados automaticamente da web e devem ser validados.
                             <label className="block text-sm font-medium text-slate-700 mb-2">Visibilidade</label>
                             <div className="flex gap-4">
                                 <label className="flex items-center gap-2 cursor-pointer group">
-                                    <div className="w-5 h-5 rounded-full border border-slate-300 flex items-center justify-center peer-checked:border-blue-500 peer-checked:bg-blue-500">
-                                        <div className="w-2.5 h-2.5 bg-blue-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                    <div className="w-5 h-5 rounded-full border border-white/20 flex items-center justify-center peer-checked:border-brand-primary peer-checked:bg-brand-primary">
+                                        <div className="w-2.5 h-2.5 bg-brand-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                     </div>
-                                    <span className="text-sm text-slate-600">Público</span>
+                                    <span className="text-sm text-slate-400">Público</span>
                                 </label>
                             </div>
                         </div>
@@ -213,42 +213,42 @@ Nota: Estes dados foram agregados automaticamente da web e devem ser validados.
                 <div className="lg:col-span-2 space-y-6">
 
                     {/* Main Info Card */}
-                    <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
-                        <h3 className="text-lg font-semibold text-slate-800 mb-6 flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <div className="bg-brand-dark/40 backdrop-blur-md rounded-2xl p-8 shadow-sm border border-white/5">
+                        <h3 className="text-lg font-semibold text-slate-100 mb-6 flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                             Informações Principais
                         </h3>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div className="col-span-2">
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Nome do Produto</label>
+                                <label className="block text-sm font-medium text-slate-400 mb-1">Nome do Produto</label>
                                 <input
                                     type="text"
                                     name="name"
                                     placeholder="Ex: Motor de Indução Trifásico Serve-X"
-                                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                    className="w-full px-4 py-2.5 bg-brand-dark/20 border border-white/10 rounded-xl focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary outline-none transition-all text-slate-200"
                                     value={formData.name}
                                     onChange={handleChange}
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Fabricante</label>
+                                <label className="block text-sm font-medium text-slate-400 mb-1">Fabricante</label>
                                 <input
                                     type="text"
                                     name="manufacturer"
                                     placeholder="Ex: Siemens, WEG..."
-                                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                    className="w-full px-4 py-2.5 bg-brand-dark/20 border border-white/10 rounded-xl focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary outline-none transition-all text-slate-200"
                                     value={formData.manufacturer}
                                     onChange={handleChange}
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Categoria</label>
+                                <label className="block text-sm font-medium text-slate-400 mb-1">Categoria</label>
                                 <select
                                     name="category"
-                                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-600"
+                                    className="w-full px-4 py-2.5 bg-brand-dark/20 border border-white/10 rounded-xl focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary outline-none transition-all text-slate-400"
                                     value={formData.category}
                                     onChange={handleChange}
                                 >
@@ -262,11 +262,11 @@ Nota: Estes dados foram agregados automaticamente da web e devem ser validados.
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-1">Descrição Comercial</label>
+                            <label className="block text-sm font-medium text-slate-400 mb-1">Descrição Comercial</label>
                             <textarea
                                 name="description"
                                 rows={4}
-                                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none"
+                                className="w-full px-4 py-3 bg-brand-dark/20 border border-white/10 rounded-xl focus:ring-2 focus:ring-brand-primary/30 focus:border-brand-primary outline-none transition-all resize-none text-slate-200"
                                 placeholder="Descreva as principais características para exibição no catálogo..."
                                 value={formData.description}
                                 onChange={handleChange}
@@ -282,7 +282,7 @@ Nota: Estes dados foram agregados automaticamente da web e devem ser validados.
 
                         <div className="relative z-10">
                             <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.5)]"></span>
+                                <span className="w-2 h-2 rounded-full bg-brand-secondary shadow-[0_0_10px_rgba(177,243,93,0.5)]"></span>
                                 RAG Data & Contexto Técnico
                             </h3>
                             <p className="text-slate-300 text-sm mb-6 max-w-lg">
@@ -295,7 +295,7 @@ Nota: Estes dados foram agregados automaticamente da web e devem ser validados.
                                     <textarea
                                         name="ragContext"
                                         rows={6}
-                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all text-slate-200 placeholder:text-slate-500 font-mono text-sm leading-relaxed"
+                                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-brand-primary/30 focus:border-transparent outline-none transition-all text-slate-200 placeholder:text-slate-500 font-mono text-sm leading-relaxed"
                                         placeholder="Cole aqui especificações técnicas, trechos de manuais ou tabelas de dados..."
                                         value={formData.ragContext}
                                         onChange={handleChange}
@@ -311,11 +311,11 @@ Nota: Estes dados foram agregados automaticamente da web e devem ser validados.
                                     <button
                                         onClick={handleAutoSearch}
                                         disabled={!formData.name || isSearching}
-                                        className={`flex items-center gap-2 px-4 py-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-200 rounded-lg text-sm font-medium transition-all border border-blue-500/20 ${(!formData.name || isSearching) ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                        className={`flex items-center gap-2 px-4 py-2 bg-brand-primary/10 hover:bg-brand-primary/20 text-brand-primary rounded-lg text-sm font-medium transition-all border border-brand-primary/20 ${(!formData.name || isSearching) ? 'opacity-50 cursor-not-allowed' : ''}`}
                                     >
                                         {isSearching ? (
                                             <>
-                                                <svg className="animate-spin h-4 w-4 text-blue-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                <svg className="animate-spin h-4 w-4 text-brand-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                                 </svg>

@@ -5,11 +5,11 @@ import { ChatMessage } from '../types';
 
 export const ChatView: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { 
-      id: '1', 
-      role: 'model', 
-      text: 'Olá! Sou o Catalogo AI. Já processei todos os manuais da linha X100 e B-45. Como posso auxiliar sua consulta técnica hoje?', 
-      timestamp: new Date() 
+    {
+      id: '1',
+      role: 'model',
+      text: 'Olá! Sou o Catalogo AI. Já processei todos os manuais da linha X100 e B-45. Como posso auxiliar sua consulta técnica hoje?',
+      timestamp: new Date()
     }
   ]);
   const [input, setInput] = useState('');
@@ -38,10 +38,10 @@ export const ChatView: React.FC = () => {
 
     try {
       const response = await geminiService.sendTextMessage(input);
-      
+
       // Simulate citation extraction for UI polish
-      const mockCitations = input.toLowerCase().includes('motor') ? ['Manual Técnico X100 (pág 14)'] : 
-                            input.toLowerCase().includes('bomba') ? ['Catálogo Hidráulica v2.0'] : [];
+      const mockCitations = input.toLowerCase().includes('motor') ? ['Manual Técnico X100 (pág 14)'] :
+        input.toLowerCase().includes('bomba') ? ['Catálogo Hidráulica v2.0'] : [];
 
       const modelMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
@@ -60,25 +60,24 @@ export const ChatView: React.FC = () => {
 
   return (
     <div className="flex flex-col h-[calc(100vh-4rem)] max-w-5xl mx-auto">
-      <div 
+      <div
         ref={scrollRef}
         className="flex-1 overflow-y-auto p-4 md:p-8 space-y-6 scrollbar-thin scrollbar-thumb-slate-200"
       >
         {messages.map((msg) => (
           <div key={msg.id} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'} animate-fadeIn`}>
-            <div className={`group relative max-w-[90%] md:max-w-[80%] p-5 rounded-3xl shadow-sm border ${
-              msg.role === 'user' 
-                ? 'bg-blue-600 text-white border-blue-500 rounded-tr-none' 
-                : 'bg-white text-slate-800 border-slate-100 rounded-tl-none'
-            }`}>
+            <div className={`group relative max-w-[90%] md:max-w-[80%] p-5 rounded-3xl shadow-sm border ${msg.role === 'user'
+                ? 'bg-brand-gradient text-brand-dark border-brand-primary/20 rounded-tr-none font-medium'
+                : 'bg-brand-dark/50 text-slate-200 border-white/5 backdrop-blur-md rounded-tl-none'
+              }`}>
               <div className="text-sm md:text-base leading-relaxed whitespace-pre-wrap">
                 {msg.text}
               </div>
-              
+
               {msg.citations && msg.citations.length > 0 && (
-                <div className="mt-4 pt-3 border-t border-slate-50 flex flex-wrap gap-2">
+                <div className="mt-4 pt-3 border-t border-white/5 flex flex-wrap gap-2">
                   {msg.citations.map((c, i) => (
-                    <span key={i} className="flex items-center gap-1.5 px-2 py-1 bg-slate-50 text-[10px] text-slate-500 font-medium rounded-md border border-slate-100 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-pointer">
+                    <span key={i} className="flex items-center gap-1.5 px-2 py-1 bg-brand-dark/30 text-[10px] text-slate-400 font-medium rounded-md border border-white/10 hover:bg-brand-primary/10 hover:text-brand-primary transition-colors cursor-pointer">
                       <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
                       {c}
                     </span>
@@ -106,19 +105,19 @@ export const ChatView: React.FC = () => {
         ))}
         {isLoading && (
           <div className="flex justify-start">
-            <div className="bg-white p-5 rounded-3xl rounded-tl-none border border-slate-100 shadow-sm flex items-center gap-3">
+            <div className="bg-brand-dark/50 p-5 rounded-3xl rounded-tl-none border border-white/5 backdrop-blur-md shadow-sm flex items-center gap-3">
               <div className="flex gap-1.5">
-                <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce"></div>
-                <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-                <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                <div className="w-2 h-2 bg-brand-primary rounded-full animate-bounce"></div>
+                <div className="w-2 h-2 bg-brand-primary rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                <div className="w-2 h-2 bg-brand-primary rounded-full animate-bounce [animation-delay:-0.3s]"></div>
               </div>
-              <span className="text-xs font-medium text-slate-400">Consultando Base Técnica...</span>
+              <span className="text-xs font-medium text-slate-500">Consultando Base Técnica...</span>
             </div>
           </div>
         )}
       </div>
 
-      <div className="p-4 md:p-8 bg-gradient-to-t from-slate-50 to-transparent">
+      <div className="p-4 md:p-8 bg-gradient-to-t from-brand-dark to-transparent">
         <div className="max-w-4xl mx-auto relative group">
           <textarea
             value={input}
@@ -129,14 +128,14 @@ export const ChatView: React.FC = () => {
                 handleSend();
               }
             }}
-            placeholder="Digite sua dúvida técnica... (ex: 'Compare o Motor X100 com o B-45')"
-            className="w-full bg-white border-2 border-slate-100 rounded-[2.5rem] px-8 py-5 pr-20 text-base focus:outline-none focus:ring-4 focus:ring-blue-500/5 focus:border-blue-500/50 transition-all resize-none shadow-xl shadow-slate-200/50 placeholder:text-slate-400"
+            placeholder="Digite sua dúvida técnica..."
+            className="w-full bg-brand-dark/80 border-2 border-white/10 rounded-[2.5rem] px-8 py-5 pr-20 text-base focus:outline-none focus:ring-4 focus:ring-brand-primary/5 focus:border-brand-primary/30 transition-all resize-none shadow-2xl shadow-black/20 placeholder:text-slate-600 text-slate-200"
             rows={1}
           />
-          <button 
+          <button
             onClick={handleSend}
             disabled={!input.trim() || isLoading}
-            className="absolute right-3 top-1/2 -translate-y-1/2 p-3.5 bg-blue-600 text-white rounded-full hover:bg-blue-700 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:scale-100 shadow-lg shadow-blue-200"
+            className="absolute right-3 top-1/2 -translate-y-1/2 p-3.5 bg-brand-gradient text-brand-dark rounded-full hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:scale-100 shadow-lg shadow-brand-primary/20"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
           </button>

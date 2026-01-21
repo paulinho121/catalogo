@@ -7,7 +7,7 @@ export const VoiceView: React.FC = () => {
   const [transcription, setTranscription] = useState<{ text: string, isUser: boolean }[]>([]);
   const [volume, setVolume] = useState(0);
   const [isThinking, setIsThinking] = useState(false);
-  
+
   const audioContextRef = useRef<AudioContext | null>(null);
   const sessionRef = useRef<any>(null);
   const nextStartTimeRef = useRef(0);
@@ -51,10 +51,10 @@ export const VoiceView: React.FC = () => {
       });
 
       sessionRef.current = await sessionPromise;
-      
+
       const source = inputCtx.createMediaStreamSource(stream);
       const processor = inputCtx.createScriptProcessor(4096, 1, 1);
-      
+
       processor.onaudioprocess = (e) => {
         const inputData = e.inputBuffer.getChannelData(0);
         let sum = 0;
@@ -67,7 +67,7 @@ export const VoiceView: React.FC = () => {
         for (let i = 0; i < inputData.length; i++) {
           int16[i] = inputData[i] * 32768;
         }
-        
+
         if (sessionRef.current) {
           sessionRef.current.sendRealtimeInput({
             media: {
@@ -103,22 +103,22 @@ export const VoiceView: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center h-[calc(100vh-4rem)] max-w-2xl mx-auto p-8">
       <div className="text-center mb-16 animate-fadeIn">
-        <h2 className="text-4xl font-black text-slate-800 mb-4 tracking-tighter">Consultoria por <span className="text-blue-600">Voz</span></h2>
-        <p className="text-slate-500 text-lg max-w-sm mx-auto font-medium">Fale com sua base técnica enquanto trabalha. Totalmente mãos-livres.</p>
+        <h2 className="text-4xl font-black text-slate-100 mb-4 tracking-tighter">Consultoria por <span className="text-brand-primary">Voz</span></h2>
+        <p className="text-slate-400 text-lg max-w-sm mx-auto font-medium">Fale com sua base técnica enquanto trabalha. Totalmente mãos-livres.</p>
       </div>
 
       <div className="relative flex items-center justify-center mb-24">
         {/* Advanced Pulse UI */}
-        <div className={`absolute w-80 h-80 rounded-full transition-all duration-700 ${isActive ? 'bg-blue-50/50 scale-100 opacity-100' : 'scale-0 opacity-0'}`}></div>
-        <div className={`absolute w-64 h-64 rounded-full transition-all duration-500 delay-100 ${isActive ? 'bg-blue-100/30 scale-100 opacity-100' : 'scale-0 opacity-0'}`}></div>
-        
+        <div className={`absolute w-80 h-80 rounded-full transition-all duration-700 ${isActive ? 'bg-brand-primary/10 scale-100 opacity-100' : 'scale-0 opacity-0'}`}></div>
+        <div className={`absolute w-64 h-64 rounded-full transition-all duration-500 delay-100 ${isActive ? 'bg-brand-primary/5 scale-100 opacity-100' : 'scale-0 opacity-0'}`}></div>
+
         {isActive && (
           <div className="absolute inset-0 flex items-center justify-center overflow-visible pointer-events-none">
             {[...Array(24)].map((_, i) => (
-              <div 
+              <div
                 key={i}
-                className="absolute w-1.5 bg-blue-500 rounded-full transition-all duration-150"
-                style={{ 
+                className="absolute w-1.5 bg-brand-primary rounded-full transition-all duration-150"
+                style={{
                   height: isActive ? `${10 + volume * 250 + Math.random() * 20}px` : '4px',
                   transform: `rotate(${i * 15}deg) translateY(100px)`,
                   opacity: 0.6 + volume
@@ -128,18 +128,17 @@ export const VoiceView: React.FC = () => {
           </div>
         )}
 
-        <button 
+        <button
           onClick={isActive ? stopVoiceSession : startVoiceSession}
-          className={`relative z-10 w-40 h-40 rounded-full flex flex-col items-center justify-center transition-all duration-500 shadow-2xl group ${
-            isActive 
-              ? 'bg-white text-red-500 shadow-red-200 border-4 border-red-50 hover:scale-95' 
-              : 'bg-blue-600 text-white shadow-blue-200 hover:scale-110 active:scale-95'
-          }`}
+          className={`relative z-10 w-40 h-40 rounded-full flex flex-col items-center justify-center transition-all duration-500 shadow-2xl group ${isActive
+              ? 'bg-brand-dark text-red-400 shadow-brand-primary/5 border-4 border-white/5 hover:scale-95'
+              : 'bg-brand-gradient text-brand-dark shadow-brand-primary/20 hover:scale-110 active:scale-95'
+            }`}
         >
           {isActive ? (
             <>
               <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" /></svg>
-              <span className="text-[10px] font-bold uppercase tracking-widest">Encerrar</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-red-400">Encerrar</span>
             </>
           ) : (
             <>
@@ -150,31 +149,30 @@ export const VoiceView: React.FC = () => {
         </button>
 
         {isThinking && (
-          <div className="absolute -bottom-12 flex items-center gap-2 px-4 py-2 bg-slate-800 text-white rounded-full text-[10px] font-bold tracking-widest uppercase shadow-lg animate-bounce">
+          <div className="absolute -bottom-12 flex items-center gap-2 px-4 py-2 bg-brand-dark/80 text-white rounded-full text-[10px] font-bold tracking-widest uppercase shadow-lg border border-white/5 animate-bounce">
             <span className="flex gap-1">
-              <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></span>
-              <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse delay-100"></span>
-              <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse delay-200"></span>
+              <span className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-pulse"></span>
+              <span className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-pulse delay-100"></span>
+              <span className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-pulse delay-200"></span>
             </span>
             IA Analisando...
           </div>
         )}
       </div>
 
-      <div className="w-full max-w-md bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm min-h-[140px] flex flex-col justify-end overflow-hidden">
+      <div className="w-full max-w-md bg-brand-dark/40 backdrop-blur-md p-6 rounded-[2.5rem] border border-white/5 shadow-sm min-h-[140px] flex flex-col justify-end overflow-hidden">
         <div className="space-y-3">
           {transcription.length === 0 ? (
             <div className="text-center py-6">
-              <p className="text-slate-300 text-xs font-medium italic">As transcrições da conversa aparecerão aqui em tempo real.</p>
+              <p className="text-slate-500 text-xs font-medium italic">As transcrições da conversa aparecerão aqui em tempo real.</p>
             </div>
           ) : (
             transcription.map((t, i) => (
               <div key={i} className={`flex ${t.isUser ? 'justify-end' : 'justify-start'} animate-slideInRight`}>
-                <p className={`text-xs px-4 py-2 rounded-2xl ${
-                  t.isUser 
-                    ? 'bg-blue-600 text-white rounded-tr-none' 
-                    : 'bg-slate-100 text-slate-700 rounded-tl-none font-medium'
-                }`}>
+                <p className={`text-xs px-4 py-2 rounded-2xl ${t.isUser
+                    ? 'bg-brand-gradient text-brand-dark rounded-tr-none font-medium'
+                    : 'bg-brand-dark/30 text-slate-300 rounded-tl-none border border-white/5 font-medium'
+                  }`}>
                   {t.text}
                 </p>
               </div>
