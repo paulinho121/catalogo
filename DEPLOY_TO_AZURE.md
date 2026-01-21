@@ -38,7 +38,7 @@ O seu site precisa das chaves do banco de dados para funcionar, mas o arquivo `.
     |------|-------|
     | `VITE_AZURE_COSMOS_CONNECTION_STRING` | (Sua string do Cosmos DB) |
     | `VITE_AZURE_STORAGE_CONNECTION_STRING` | (Sua string do Storage) |
-    | `GEMINI_API_KEY` | (Sua chave da IA, se tiver) |
+    | `VITE_GEMINI_API_KEY` | (Sua chave da IA, se tiver) |
 
 5.  Clique em **Save**.
 
