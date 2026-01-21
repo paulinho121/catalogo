@@ -37,7 +37,11 @@ export const ChatView: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response = await geminiService.sendTextMessage(input);
+      const history = messages.map(m => ({
+        role: m.role,
+        content: m.text
+      }));
+      const response = await geminiService.sendTextMessage(input, history);
 
       // Simulate citation extraction for UI polish
       const mockCitations = input.toLowerCase().includes('motor') ? ['Manual Técnico X100 (pág 14)'] :
@@ -67,8 +71,8 @@ export const ChatView: React.FC = () => {
         {messages.map((msg) => (
           <div key={msg.id} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'} animate-fadeIn`}>
             <div className={`group relative max-w-[90%] md:max-w-[80%] p-5 rounded-3xl shadow-sm border ${msg.role === 'user'
-                ? 'bg-brand-gradient text-brand-dark border-brand-primary/20 rounded-tr-none font-medium'
-                : 'bg-brand-dark/50 text-slate-200 border-white/5 backdrop-blur-md rounded-tl-none'
+              ? 'bg-brand-gradient text-brand-dark border-brand-primary/20 rounded-tr-none font-medium'
+              : 'bg-brand-dark/50 text-slate-200 border-white/5 backdrop-blur-md rounded-tl-none'
               }`}>
               <div className="text-sm md:text-base leading-relaxed whitespace-pre-wrap">
                 {msg.text}

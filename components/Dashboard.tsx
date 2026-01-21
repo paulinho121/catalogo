@@ -37,7 +37,7 @@ export const Dashboard: React.FC<{ setView: (v: AppView) => void }> = ({ setView
             <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>
           </div>
           <h3 className="text-2xl font-bold mb-3">Chat de Engenharia</h3>
-          <p className="text-brand-dark/80 text-sm leading-relaxed font-medium">Consulte dados complexos e comparações técnicas em linguagem natural.</p>
+          <p className="text-brand-dark/80 text-sm leading-relaxed font-medium">Consulte dados complexos, especificações técnicas e faça comparações entre produtos usando linguagem natural.</p>
           <div className="mt-8 flex items-center gap-2 text-xs font-bold text-brand-dark uppercase tracking-widest group-hover:translate-x-2 transition-transform">
             Abrir Consulta <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
           </div>
@@ -51,7 +51,7 @@ export const Dashboard: React.FC<{ setView: (v: AppView) => void }> = ({ setView
             <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
           </div>
           <h3 className="text-2xl font-bold text-slate-100 mb-3">Voz em Campo</h3>
-          <p className="text-slate-400 text-sm leading-relaxed">Interação viva e sem mãos. Ideal para manutenção em campo e chão de fábrica.</p>
+          <p className="text-slate-400 text-sm leading-relaxed">Assistente de voz inteligente para consulta mãos-livres durante manutenções e inspeções técnicas no chão de fábrica.</p>
           <div className="mt-8 flex items-center gap-2 text-xs font-bold text-brand-primary uppercase tracking-widest group-hover:translate-x-2 transition-transform">
             Ativar Assistente <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
           </div>
@@ -59,13 +59,13 @@ export const Dashboard: React.FC<{ setView: (v: AppView) => void }> = ({ setView
 
         <button
           onClick={() => setView(AppView.ADMIN)}
-          className="group bg-slate-800 p-10 rounded-[2.5rem] text-left text-white shadow-2xl shadow-slate-300 transition-all hover:-translate-y-2"
+          className="group bg-brand-dark/40 p-10 rounded-[2.5rem] text-left shadow-xl shadow-brand-primary/5 border border-white/5 backdrop-blur-md transition-all hover:-translate-y-2"
         >
           <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-8">
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
           </div>
-          <h3 className="text-2xl font-bold mb-3">Administração</h3>
-          <p className="text-slate-400 text-sm leading-relaxed">Gerencie versões, monitore o RAG e faça upload de novos ativos técnicos.</p>
+          <h3 className="text-2xl font-bold text-slate-100 mb-3">Administração</h3>
+          <p className="text-slate-400 text-sm leading-relaxed">Gerencie sua base de conhecimento, adicione novos manuais e monitore a saúde da indexação da sua inteligência artificial.</p>
           <div className="mt-8 flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-widest group-hover:translate-x-2 transition-transform">
             Gestão de Base <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
           </div>
@@ -126,38 +126,38 @@ export const Dashboard: React.FC<{ setView: (v: AppView) => void }> = ({ setView
 
         {/* Sidebar: Activity/Indexing */}
         <div>
-          <h4 className="text-2xl font-bold text-slate-100 tracking-tight mb-8">Saúde do Sistema</h4>
-          <div className="bg-brand-dark/40 rounded-[2.5rem] p-8 shadow-sm border border-white/5 backdrop-blur-md">
-            <div className="space-y-8">
+          <div className="bg-brand-dark/40 rounded-[2.5rem] p-8 shadow-2xl border border-white/5 backdrop-blur-md h-full">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+              </div>
+              <h4 className="text-xl font-bold text-slate-100 tracking-tight">Saúde do Sistema</h4>
+            </div>
+
+            <div className="space-y-10">
               <div>
-                <div className="flex justify-between items-end mb-2">
-                  <span className="text-sm font-bold text-slate-300">Indexação RAG</span>
-                  <span className="text-xs font-bold text-brand-primary">85%</span>
+                <div className="flex justify-between items-end mb-3">
+                  <div className="space-y-1">
+                    <span className="block text-xs font-bold text-slate-500 uppercase tracking-widest">Indexação RAG</span>
+                    <span className="block text-[10px] text-brand-primary font-medium">Status: Base de dados sincronizada</span>
+                  </div>
+                  <span className="text-sm font-black text-brand-primary">100%</span>
                 </div>
-                <div className="h-2 w-full bg-brand-dark rounded-full overflow-hidden border border-white/5">
-                  <div className="h-full bg-brand-gradient rounded-full w-[85%] animate-pulse"></div>
+                <div className="h-3 w-full bg-brand-dark rounded-full overflow-hidden border border-white/5 p-0.5">
+                  <div className="h-full bg-brand-gradient rounded-full w-[100%] shadow-[0_0_10px_rgba(0,210,189,0.3)]"></div>
                 </div>
-                <p className="text-[10px] text-slate-500 mt-2 font-medium italic">Processando "Guia de Bombas v3.pdf"...</p>
               </div>
 
-              <div className="pt-6 border-t border-white/5">
-                <span className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Atividade Recente</span>
-                <div className="space-y-4">
-                  {[
-                    { user: "João M.", action: "Comparou Motor X100 vs B-45", time: "2m" },
-                    { user: "Sistema", action: "Novo manual indexado com sucesso", time: "15m" },
-                    { user: "Admin", action: "Backup da base técnica concluído", time: "1h" }
-                  ].map((act, i) => (
-                    <div key={i} className="flex gap-3">
-                      <div className="w-8 h-8 rounded-full bg-brand-primary/10 flex items-center justify-center shrink-0">
-                        <div className="w-1.5 h-1.5 bg-brand-primary rounded-full"></div>
-                      </div>
-                      <div>
-                        <p className="text-xs text-slate-300 font-semibold">{act.action}</p>
-                        <p className="text-[10px] text-slate-500">{act.user} • {act.time} atrás</p>
-                      </div>
-                    </div>
-                  ))}
+              <div className="pt-8 border-t border-white/5">
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Atividade Recente</span>
+                  <span className="w-2 h-2 bg-brand-secondary rounded-full animate-ping"></span>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="text-center py-4">
+                    <p className="text-[10px] text-slate-500 font-medium italic">Nenhuma atividade registrada ainda.</p>
+                  </div>
                 </div>
               </div>
             </div>
